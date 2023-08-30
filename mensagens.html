@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .message-box {
+      width: 300px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .messages {
+      height: 200px;
+      border: 1px solid #ccc;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+
+    #newMessage {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+
+    #sendMessage {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+  <title>Caixa de Mensagens</title>
+</head>
+<body>
+  <div class="message-box" id="messageBox">
+    <div class="messages" id="messages">
+      <!-- Mensagens serão exibidas aqui -->
+    </div>
+    <input type="text" id="newMessage" placeholder="Digite sua mensagem...">
+    <button id="sendMessage">Enviar</button>
+  </div>
+  <script>
+    const messagesContainer = document.getElementById('messages');
+    const newMessageInput = document.getElementById('newMessage');
+    const sendMessageButton = document.getElementById('sendMessage');
+
+    sendMessageButton.addEventListener('click', () => {
+      const newMessage = newMessageInput.value;
+      if (newMessage.trim() !== '') {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        messageElement.textContent = newMessage;
+        messagesContainer.appendChild(messageElement);
+        newMessageInput.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
